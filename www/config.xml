@@ -20,7 +20,6 @@
         Enable individual API permissions here.
         The "device" permission is required for the 'deviceready' event.
     -->
-	<gap:plugin name="org.apache.cordova.device" />
 
     <!--
         If you do not want any permissions to be added to your app, add the
@@ -51,7 +50,7 @@
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
-	<gap:plugin name="Device" value="org.apache.cordova.Device" />
+	<gap:plugin name="org.apache.cordova.device" />
 	
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />

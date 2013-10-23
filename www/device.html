@@ -4,52 +4,29 @@
         <title>PGB Kitchen Sink</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-    </head>
-    <body>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
 
-		<div data-role="page" id="pageDevice" data-cache="never">
-			<script type="text/javascript" charset="utf-8">
-				//http://docs.phonegap.com/en/2.3.0/cordova_device_device.md.html#Device
-				
-				$("#pageDevice").bind('pageshow', function() {
-					deviceInformation();
-				});
-				
-				function deviceInformation() {					
-					if (device == undefined) {
-						$("#deviceProperties thead th").html("<span class='warn'>Could not load device</span>");
-						if (window.device != undefined) {
-							$("#deviceProperties thead th").append("<br />try window.device instead");
-						}
-					} 
-					else 
-					{
-						$('#deviceProperties tbody').append('<tr><td>Device Name: </td><td>' 	 + device.name + '</td></tr>');
-						$('#deviceProperties tbody').append('<tr><td>Device Cordova: </td><td>'  + device.cordova  + '</td></tr>');
-						$('#deviceProperties tbody').append('<tr><td>Device Platform: </td><td>' + device.platform + '</td></tr>');
-						$('#deviceProperties tbody').append('<tr><td>Device UUID: </td><td>'     + device.uuid     + '</td></tr>');
-						$('#deviceProperties tbody').append('<tr><td>Device Model: </td><td>'    + device.model     + '</td></tr>');
-						$('#deviceProperties tbody').append('<tr><td>Device Version: </td><td>'  + device.version  + '</td></tr>');
-					}
-				}
-				
-			</script>
-		
-			<div data-role="header">
-				<h1>Device</h1>
-			</div><!-- /header -->
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
 
-			<div data-role="content">	
-				<table id="deviceProperties">
-					<thead>
-						<tr><th colspan="2">Device Properties</th></tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-			</div><!-- /content -->
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
+                            'Device Cordova: '  + device.cordova  + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Model: '    + device.model    + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
+    }
 
-		</div><!-- /page -->
-    				
-    </body>
+    </script>
+  </head>
+  <body>
+    <p id="deviceProperties">Loading device properties...</p>
+  </body>
+
 </html>
